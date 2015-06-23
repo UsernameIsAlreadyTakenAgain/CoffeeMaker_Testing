@@ -74,10 +74,8 @@ public class HouseTest {
 	public void testNoNorthDoor(){
 		House h=new House(1);
 		h.moveNorth();
-		String res1=h.getCurrentRoomInfo();
-		Boolean check=res1.equals("You are in a magical land!  But you are returned to the beginning!");
-		assertEquals(check,true);
-		fail();
+		String res=h.getCurrentRoomInfo();
+		assertEquals(res," ");
 	}
 	
 	/*
@@ -90,10 +88,8 @@ public class HouseTest {
 		House h=new House(1);
 		h.moveSouth();
 		h.moveSouth();
-		String res1=h.getCurrentRoomInfo();
-		Boolean check=res1.equals("You are in a magical land!  But you are returned to the beginning!");
-		assertEquals(check,true);
-		fail();
+		String res=h.getCurrentRoomInfo();
+		assertEquals(res," ");
 	}
 	
 	/*
