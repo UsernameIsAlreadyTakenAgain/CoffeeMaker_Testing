@@ -50,6 +50,7 @@ public class HouseTest {
 	
 	/*
 	 * Test to see whether the method moveNorth can work correctly
+	 * make sure players can go north only if there is a door in the north
 	 */
 	@Test
 	public void testMoveNorth(){
@@ -65,7 +66,39 @@ public class HouseTest {
 	}
 	
 	/*
+	 * Test whether the player will go nowhere if there is no door in the north
+	 * we make it deliberately fails here because it should not be able to go north in 
+	 * this kind of situation even it returns back finally
+	 */
+	@Test
+	public void testNoNorthDoor(){
+		House h=new House(1);
+		h.moveNorth();
+		String res1=h.getCurrentRoomInfo();
+		Boolean check=res1.equals("You are in a magical land!  But you are returned to the beginning!");
+		assertEquals(check,true);
+		fail();
+	}
+	
+	/*
+	 * Test whether the player will go nowhere if there is no door in the south
+	 * we make it deliberately fails here because it should not be able to go south in 
+	 * this kind of situation even it returns back finally
+	 */
+	@Test
+	public void testNoSouthDoor(){
+		House h=new House(1);
+		h.moveSouth();
+		h.moveSouth();
+		String res1=h.getCurrentRoomInfo();
+		Boolean check=res1.equals("You are in a magical land!  But you are returned to the beginning!");
+		assertEquals(check,true);
+		fail();
+	}
+	
+	/*
 	 * Test to see whether the method moveSouth can work correctly
+	 * make sure players can go south only if there is a door in the south
 	 */
 	@Test
 	public void testMoveSouth(){

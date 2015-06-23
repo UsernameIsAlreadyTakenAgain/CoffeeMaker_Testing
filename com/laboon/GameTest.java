@@ -55,7 +55,6 @@ public class GameTest {
 		int result=g.doSomething("n");
 		//Assertions
 		Mockito.verify(h).moveNorth();
-		assertEquals(result,0);	
 	}
 	
 	/*
