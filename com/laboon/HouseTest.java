@@ -9,8 +9,8 @@ import org.mockito.Mockito;
 public class HouseTest {
 
 	/*
-	 * Test to see whether the method getCurrentRoomInfo can work in the legal number
-	 * basic case
+	 * Test to see whether the method getCurrentRoomInfo can work in the valid number
+	 * base case
 	 */
 	@Test
 	public void testGetCurrentRoomInfo_OutRange(){
@@ -24,7 +24,7 @@ public class HouseTest {
 	}
 	
 	/*
-	 * Test to see whether the method getCurrentRoomInfo can correctly judge the out-range value
+	 * Test to see whether the method getCurrentRoomInfo can correctly judge the invalid value
 	 * edge case: _currentRoom=_numRooms
 	 */
 	@Test
@@ -36,7 +36,7 @@ public class HouseTest {
 	}
 	
 	/*
-	 * Test to see whether the method getCurrentRoomInfo can correctly judge the out-range value
+	 * Test to see whether the method getCurrentRoomInfo can correctly judge the invalid value
 	 * edge case: _currentRoom ==-1
 	 */
 	@Test
@@ -49,8 +49,7 @@ public class HouseTest {
 	
 	
 	/*
-	 * Test to see whether the method moveNorth can work correctly
-	 * make sure players can go north only if there is a door in the north
+	 * Test to see that player can move north if there is a door leading north
 	 */
 	@Test
 	public void testMoveNorth(){
@@ -66,35 +65,7 @@ public class HouseTest {
 	}
 	
 	/*
-	 * Test whether the player will go nowhere if there is no door in the north
-	 * we make it deliberately fails here because it should not be able to go north in 
-	 * this kind of situation even it returns back finally
-	 */
-	@Test
-	public void testNoNorthDoor(){
-		House h=new House(1);
-		h.moveNorth();
-		String res=h.getCurrentRoomInfo();
-		assertEquals(res," ");
-	}
-	
-	/*
-	 * Test whether the player will go nowhere if there is no door in the south
-	 * we make it deliberately fails here because it should not be able to go south in 
-	 * this kind of situation even it returns back finally
-	 */
-	@Test
-	public void testNoSouthDoor(){
-		House h=new House(1);
-		h.moveSouth();
-		h.moveSouth();
-		String res=h.getCurrentRoomInfo();
-		assertEquals(res," ");
-	}
-	
-	/*
-	 * Test to see whether the method moveSouth can work correctly
-	 * make sure players can go south only if there is a door in the south
+	 * Test to see that player can move south if there is a door leading south
 	 */
 	@Test
 	public void testMoveSouth(){
@@ -109,6 +80,31 @@ public class HouseTest {
 		check=res2.equals("You are in a magical land!  But you are returned to the beginning!");
 		assertEquals(check,false);
 	}
+	
+	
+	/*
+	 * Test to see if player can move north if there is no north door
+	 */
+	@Test
+	public void testNoNorthDoor(){
+		House h=new House(1);
+		h.moveNorth();
+		String res=h.getCurrentRoomInfo();
+		assertNotEquals(res,"You are in a magical land!  But you are returned to the beginning!");
+	}
+	
+	/*
+	 * Test to see if player can move north if there is no south door
+	 */
+	@Test
+	public void testNoSouthDoor(){
+		House h=new House(1);
+		h.moveSouth();
+		h.moveSouth();
+		String res=h.getCurrentRoomInfo();
+		assertNotEquals(res,"You are in a magical land!  But you are returned to the beginning!");
+	}
+	
 	
 	
 	/*

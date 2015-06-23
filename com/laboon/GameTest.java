@@ -13,7 +13,7 @@ public class GameTest {
 	
 	/*
 	 * Test doSomething edge case
-	 * Input value: p(illegal value)
+	 * Input value: p(invalid value)
 	 */
 	@Test
 	public void testDoSomething() {
@@ -58,7 +58,7 @@ public class GameTest {
 	}
 	
 	/*
-	 * Test doSomething move north
+	 * Test doSomething help
 	 * Input value: H
 	 */
 	@Test
@@ -123,7 +123,7 @@ public class GameTest {
 	}
 	
 	/*
-	 * Test doSomething look, also test lower case here
+	 * Test doSomething look
 	 *  Input value: L
 	 */
 	@Test
@@ -155,7 +155,7 @@ public class GameTest {
 	}
 	
 	/*
-	 * Test doSomething show inventory, also test lower case here
+	 * Test doSomething show inventory
 	 *  Input value: I
 	 */
 	@Test
